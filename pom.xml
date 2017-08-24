@@ -35,7 +35,7 @@
 
     <groupId>io.dominic.forks</groupId>
     <artifactId>plantuml</artifactId>
-    <version>1.2017.16-SNAPSHOT</version>
+    <version>1.2017.16</version>
     <packaging>jar</packaging>
 
     <name>PlantUML</name>
