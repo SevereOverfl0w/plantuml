@@ -40,13 +40,13 @@ import java.util.Hashtable;
 
 import net.sourceforge.plantuml.Log;
 
-import plantuml.com.google.xzing.BarcodeFormat;
-import plantuml.com.google.xzing.EncodeHintType;
-import plantuml.com.google.xzing.WriterException;
-import plantuml.com.google.xzing.client.j2se.MatrixToImageWriter;
-import plantuml.com.google.xzing.common.BitMatrix;
-import plantuml.com.google.xzing.qrcode.QRCodeWriter;
-import plantuml.com.google.xzing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 public class FlashCodeUtilsZxing implements FlashCodeUtils {
 
@@ -56,8 +56,7 @@ public class FlashCodeUtilsZxing implements FlashCodeUtils {
 			final Hashtable hints = new Hashtable();
 			hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 			hints.put(EncodeHintType.CHARACTER_SET, "UTF8");
-			final int multiple = 1;
-			final BitMatrix bit = writer.encode(s, BarcodeFormat.QR_CODE, multiple, hints);
+			final BitMatrix bit = writer.encode(s, BarcodeFormat.QR_CODE, 125, 125, hints);
 			return MatrixToImageWriter.toBufferedImage(bit);
 		} catch (WriterException e) {
 			Log.debug("Cannot create flashcode " + e);
